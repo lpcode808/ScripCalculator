@@ -54,9 +54,9 @@
       "name": "PORTUGUESE BEAN SOUP",
       "icon": "🥣",
       "items": [
-        {"id": "soup_8", "name": "8 ounce", "scrip": 5},
-        {"id": "soup_16", "name": "16 ounce", "scrip": 9},
-        {"id": "soup_32", "name": "32 ounce", "scrip": 17}
+        {"id": "soup_8", "name": "8 ounce soup", "scrip": 5},
+        {"id": "soup_16", "name": "16 ounce soup", "scrip": 9},
+        {"id": "soup_32", "name": "32 ounce soup", "scrip": 17}
       ]
     },
     {

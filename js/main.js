@@ -74,23 +74,16 @@ function renderMenu() {
 // Toggle category visibility
 function toggleCategory(categoryId, header) {
     const element = document.getElementById(categoryId);
-    const isCollapsed = element.classList.contains('hidden');
     
     // Toggle the collapsed state
     element.classList.toggle('hidden');
     header.classList.toggle('collapsed');
     
-    // If category has items with non-zero quantities, update the total text
+    // Always show the current total, regardless of collapsed state
     const categoryItems = menuData.categories.find(cat => cat.name === categoryId).items;
-    const hasQuantities = categoryItems.some(item => orderQuantities[item.id] > 0);
-    
+    const categoryTotal = calculateCategoryTotal(categoryItems);
     const total = document.getElementById(`total-${categoryId}`);
-    if (hasQuantities && isCollapsed) {
-        total.textContent = "Has items!";
-    } else {
-        const categoryTotal = calculateCategoryTotal(categoryItems);
-        total.textContent = `${categoryTotal} scrip`;
-    }
+    total.textContent = `${categoryTotal} scrip`;
 }
 
 // Adjust quantity with buttons
@@ -191,9 +184,12 @@ function updateQuantity(itemId, quantity) {
     const sheetsNeeded = Math.ceil(totalScrip / menuData.scripInfo.scripPerSheet);
     const totalCost = (sheetsNeeded * menuData.scripInfo.scripSheetCost).toFixed(2);
     
-    // Update displays
+    // Update all total displays
     document.getElementById('total-scrip').textContent = totalScrip;
     document.getElementById('total-cost').textContent = totalCost;
+    document.getElementById('floating-total-scrip').textContent = totalScrip;
+    document.getElementById('floating-total-cost').textContent = totalCost;
+    
     updateSummary();
     updateTimestamp();
 }
@@ -216,4 +212,26 @@ function attachEventListeners() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     updateTimestamp();
-}); 
+    initializeScrollHandler();
+});
+
+// Initialize scroll handler
+function initializeScrollHandler() {
+    const floatingTotals = document.querySelector('.floating-totals');
+    const totalDisplay = document.querySelector('.total-display');
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const totalDisplayBottom = totalDisplay.getBoundingClientRect().bottom;
+        
+        // Show floating totals when scrolled past the main total display
+        if (totalDisplayBottom < 0) {
+            floatingTotals.classList.add('visible');
+        } else {
+            floatingTotals.classList.remove('visible');
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+} 
