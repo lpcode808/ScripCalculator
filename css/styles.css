@@ -12,7 +12,7 @@
 body {
     font-family: 'Overpass', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
-    padding: 0;
+    padding-top: 120px;  /* Adjust based on your header height */
     color: var(--text-color);
     line-height: 1.6;
     background-color: var(--background-color);
@@ -20,8 +20,10 @@ body {
 
 /* Header styles */
 .total-display {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     background: white;
     padding: 15px;
     padding-bottom: 25px;  /* Make room for timestamp */
@@ -318,42 +320,7 @@ body {
 
 /* Floating totals */
 .floating-totals {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    display: flex;
-    gap: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.floating-totals.visible {
-    opacity: 1;
-}
-
-.floating-total-item {
-    text-align: center;
-    font-family: 'Overpass', sans-serif;
-}
-
-.floating-total-item .label {
-    font-size: 0.8em;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.floating-total-item .value {
-    font-size: 1.2em;
-    font-weight: 600;
+    display: none;
 }
 
 /* Adjust bottom margin to prevent overlap with floating totals */

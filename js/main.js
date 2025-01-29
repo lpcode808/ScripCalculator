@@ -184,11 +184,9 @@ function updateQuantity(itemId, quantity) {
     const sheetsNeeded = Math.ceil(totalScrip / menuData.scripInfo.scripPerSheet);
     const totalCost = (sheetsNeeded * menuData.scripInfo.scripSheetCost).toFixed(2);
     
-    // Update all total displays
+    // Update displays
     document.getElementById('total-scrip').textContent = totalScrip;
     document.getElementById('total-cost').textContent = totalCost;
-    document.getElementById('floating-total-scrip').textContent = totalScrip;
-    document.getElementById('floating-total-cost').textContent = totalCost;
     
     updateSummary();
     updateTimestamp();
@@ -212,26 +210,4 @@ function attachEventListeners() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     updateTimestamp();
-    initializeScrollHandler();
-});
-
-// Initialize scroll handler
-function initializeScrollHandler() {
-    const floatingTotals = document.querySelector('.floating-totals');
-    const totalDisplay = document.querySelector('.total-display');
-    let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        const totalDisplayBottom = totalDisplay.getBoundingClientRect().bottom;
-        
-        // Show floating totals when scrolled past the main total display
-        if (totalDisplayBottom < 0) {
-            floatingTotals.classList.add('visible');
-        } else {
-            floatingTotals.classList.remove('visible');
-        }
-        
-        lastScrollY = currentScrollY;
-    });
-} 
+}); 
