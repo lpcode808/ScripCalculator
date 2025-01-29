@@ -1,0 +1,317 @@
+/* Base styles */
+:root {
+    --primary-color: #4A2511;     /* Brown from logo */
+    --secondary-color: #8CC63F;   /* Green from hills */
+    --dark-green: #2E7D32;        /* Dark green for totals */
+    --accent-color: #87CEEB;      /* Light blue from sky */
+    --text-color: #4A2511;        /* Brown text */
+    --border-color: #ddd;
+    --background-color: #F5F5F5;
+}
+
+body {
+    font-family: 'Overpass', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--background-color);
+}
+
+/* Header styles */
+.total-display {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px;
+    padding-bottom: 25px;  /* Make room for timestamp */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    position: relative;  /* For absolute positioning of timestamp */
+}
+
+.total-display div {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.info {
+    font-family: 'Overpass', sans-serif;
+    font-size: 0.9em !important;
+    color: #666;
+}
+
+/* Category styles */
+.category {
+    margin: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.category-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    position: relative;
+}
+
+.category-header .left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.category-header .icon {
+    margin-right: 12px;
+    font-size: 1.3em;
+    transition: transform 0.3s ease;
+}
+
+.category-header .total {
+    background: var(--dark-green);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-right: 35px;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Collapse indicator */
+.category-header::after {
+    content: '▼';
+    position: absolute;
+    right: 20px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.category-header.collapsed::after {
+    transform: rotate(-180deg);
+}
+
+.category-header.collapsed .icon {
+    transform: scale(0.9);
+}
+
+.category-header.collapsed .total {
+    background: var(--secondary-color);
+}
+
+/* Item styles */
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.scrip-amount {
+    color: var(--primary-color);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Quantity control styles */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 600;
+}
+
+.quantity-btn:active {
+    background: #7AB52F;
+    transform: scale(0.95);
+}
+
+.quantity-input {
+    width: 50px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 500;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .category {
+        margin: 8px;
+    }
+    
+    .item-row {
+        padding: 12px;
+    }
+    
+    .quantity-btn {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .quantity-input {
+        width: 45px;
+        height: 48px;
+    }
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Items container */
+.items {
+    transition: max-height 0.3s ease-out;
+    max-height: 2000px; /* Arbitrary large height */
+    overflow: hidden;
+}
+
+.items.hidden {
+    max-height: 0;
+}
+
+/* Order Summary styles */
+.order-summary {
+    margin: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.summary-header {
+    background: var(--dark-green);
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+}
+
+.summary-title {
+    font-size: 1.1em;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.toggle-icon.collapsed {
+    transform: rotate(-180deg);
+}
+
+.summary-content {
+    padding: 15px;
+    transition: max-height 0.3s ease-out;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.summary-content.hidden {
+    max-height: 0;
+    padding: 0;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Overpass', sans-serif;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item-name {
+    flex: 1;
+}
+
+.summary-item-quantity {
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.empty-message {
+    color: #666;
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+    font-family: 'Overpass', sans-serif;
+}
+
+.last-updated {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.8em !important;
+    color: #666;
+    font-family: 'Overpass', sans-serif;
+    margin: 0 !important;
+} 

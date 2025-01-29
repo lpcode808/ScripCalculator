@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Punahou Carnival 2025 - Scrip Calculator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤠</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Overpass:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="total-display">
+        <div>Scrip needed: <span id="total-scrip">0</span></div>
+        <div>Total cost: $<span id="total-cost">0.00</span></div>
+        <div class="info">(1 scrip = 50¢, $10 for sheet of 20 scrip)</div>
+        <div class="last-updated">Last updated: <span id="update-time"></span></div>
+    </div>
+
+    <div class="order-summary">
+        <div class="summary-header" onclick="toggleSummary()">
+            <span class="summary-title">Order Summary</span>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div id="summary-content" class="summary-content">
+            <!-- Summary items will be dynamically inserted here -->
+            <div class="empty-message">No items added yet</div>
+        </div>
+    </div>
+
+    <div id="categories">
+        <!-- Menu categories will be dynamically inserted here -->
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

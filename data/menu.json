@@ -1,0 +1,83 @@
+{
+  "categories": [
+    {
+      "name": "BEVERAGE CENTER",
+      "icon": "🥤",
+      "items": [
+        {"id": "soft_drink", "name": "Bottled Soft Drink", "scrip": 5},
+        {"id": "water", "name": "Bottled Water", "scrip": 3},
+        {"id": "body_armor", "name": "Body Armor", "scrip": 6},
+        {"id": "apple_juice", "name": "Apple Juice", "scrip": 4},
+        {"id": "aqua_fresca", "name": "Aqua Fresca", "scrip": 5}
+      ]
+    },
+    {
+      "name": "CORN",
+      "icon": "🌽",
+      "items": [
+        {"id": "corn_cob", "name": "Corn on the Cob", "scrip": 4}
+      ]
+    },
+    {
+      "name": "CHILI/RICE BOWL",
+      "icon": "🌶",
+      "items": [
+        {"id": "chili_rice", "name": "Chili/rice bowl", "scrip": 9}
+      ]
+    },
+    {
+      "name": "GYROS",
+      "icon": "🥙",
+      "items": [
+        {"id": "gyros", "name": "Gyros", "scrip": 14},
+        {"id": "veg_gyros", "name": "Vegetarian Gyros", "scrip": 7}
+      ]
+    },
+    {
+      "name": "HAMBURGER",
+      "icon": "🍔",
+      "items": [
+        {"id": "teri_burger", "name": "Teri Burger", "scrip": 7},
+        {"id": "teri_cheese", "name": "Teri Burger with Cheese", "scrip": 8}
+      ]
+    },
+    {
+      "name": "MALASADA",
+      "icon": "🍩",
+      "items": [
+        {"id": "malasada", "name": "Malasada", "scrip": 1},
+        {"id": "malasada_dozen", "name": "Malasada (1 dozen)", "scrip": 10},
+        {"id": "iced_coffee", "name": "Iced Coffee", "scrip": 8}
+      ]
+    },
+    {
+      "name": "PORTUGUESE BEAN SOUP",
+      "icon": "🥣",
+      "items": [
+        {"id": "soup_8", "name": "8 ounce", "scrip": 5},
+        {"id": "soup_16", "name": "16 ounce", "scrip": 9},
+        {"id": "soup_32", "name": "32 ounce", "scrip": 17}
+      ]
+    },
+    {
+      "name": "SMOOTHIE",
+      "icon": "🍓",
+      "items": [
+        {"id": "smoothie", "name": "Smoothie", "scrip": 9}
+      ]
+    },
+    {
+      "name": "TACO SALAD & NACHOS",
+      "icon": "🌮",
+      "items": [
+        {"id": "taco_salad", "name": "Taco Salad", "scrip": 10},
+        {"id": "nachos", "name": "Cheese Nachos", "scrip": 6}
+      ]
+    }
+  ],
+  "scripInfo": {
+    "scripPerDollar": 2,
+    "scripSheetCost": 10,
+    "scripPerSheet": 20
+  }
+} 
