@@ -127,28 +127,6 @@ function updateSummary() {
         .join('');
 }
 
-// Update timestamp
-function updateTimestamp() {
-    const now = new Date();
-    const timeOptions = {
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-        timeZone: 'Pacific/Honolulu'
-    };
-    const dateOptions = {
-        month: 'numeric',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'Pacific/Honolulu'
-    };
-    const timeStr = now.toLocaleString('en-US', timeOptions);
-    const dateStr = now.toLocaleString('en-US', dateOptions);
-    document.getElementById('update-time').textContent = 
-        `${timeStr} HST, ${dateStr}`;
-}
-
 // Update quantity and recalculate totals
 function updateQuantity(itemId, quantity) {
     const numQuantity = parseInt(quantity) || 0;
@@ -189,7 +167,6 @@ function updateQuantity(itemId, quantity) {
     document.getElementById('total-cost').textContent = totalCost;
     
     updateSummary();
-    updateTimestamp();
 }
 
 // Helper function to find item by ID
@@ -209,5 +186,4 @@ function attachEventListeners() {
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
-    updateTimestamp();
 }); 
