@@ -35,8 +35,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    min-height: var(--header-height);  /* Changed to min-height */
-    background: white;
+    min-height: var(--header-height);
+    background: #f4f9f4;  /* Light green background */
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 100;
@@ -45,7 +45,7 @@ body {
     font-family: 'Merriweather', serif;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;  /* Changed to flex-start */
+    justify-content: flex-start;
 }
 
 .total-display div {
@@ -58,6 +58,20 @@ body {
     font-size: 0.9em !important;
     color: #666;
     line-height: 1.4;  /* Added line height */
+}
+
+.info a {
+    color: var(--dark-green);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.info a:visited {
+    color: var(--dark-green);  /* Keep same color even after visited */
+}
+
+.info a:hover {
+    text-decoration: underline;
 }
 
 /* Category styles */
