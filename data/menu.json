@@ -4,74 +4,93 @@
       "name": "BEVERAGE CENTER",
       "icon": "🥤",
       "items": [
-        {"id": "soft_drink", "name": "Bottled Soft Drink", "scrip": 5},
-        {"id": "water", "name": "Bottled Water", "scrip": 3},
+        {"id": "soft_drink", "name": "Soft Drinks", "scrip": 6},
+        {"id": "water", "name": "Water", "scrip": 4},
         {"id": "body_armor", "name": "Body Armor", "scrip": 6},
-        {"id": "apple_juice", "name": "Apple Juice", "scrip": 4},
-        {"id": "aqua_fresca", "name": "Aqua Fresca", "scrip": 5}
+        {"id": "apple_juice", "name": "Apple Juice", "scrip": 6},
+        {"id": "aqua_fresca", "name": "Iced Coffee", "scrip": 8}
       ]
     },
     {
       "name": "CORN",
       "icon": "🌽",
       "items": [
-        {"id": "corn_cob", "name": "Corn on the Cob", "scrip": 4}
-      ]
-    },
-    {
-      "name": "CHILI/RICE BOWL",
-      "icon": "🌶",
-      "items": [
-        {"id": "chili_rice", "name": "Chili/rice bowl", "scrip": 9}
+        {"id": "corn_cob", "name": "Corn on the Cob", "scrip": 5}
       ]
     },
     {
       "name": "GYROS",
       "icon": "🥙",
       "items": [
-        {"id": "gyros", "name": "Gyros", "scrip": 14},
-        {"id": "veg_gyros", "name": "Vegetarian Gyros", "scrip": 7}
+        {"id": "gyros", "name": "Gyros", "scrip": 15},
+        {"id": "veg_gyros", "name": "Vegetarian Gyros", "scrip": 8}
       ]
     },
     {
-      "name": "HAMBURGER",
-      "icon": "🍔",
+      "name": "HAWAIIAN PLATE",
+      "icon": "🍍",
       "items": [
-        {"id": "teri_burger", "name": "Teri Burger", "scrip": 7},
-        {"id": "teri_cheese", "name": "Teri Burger with Cheese", "scrip": 8}
+        {"id": "kalua_plate", "name": "Plate (kalua pig)", "scrip": 28},
+        {"id": "veg_plate", "name": "Plate (vegetarian)", "scrip": 24}
       ]
     },
     {
       "name": "MALASADA",
       "icon": "🍩",
       "items": [
-        {"id": "malasada", "name": "Malasada", "scrip": 1},
-        {"id": "malasada_dozen", "name": "Malasada (1 dozen)", "scrip": 10},
+        {"id": "malasada", "name": "Malasada", "scrip": 2},
+        {"id": "malasada_dozen", "name": "Malasada (1 dozen)", "scrip": 22},
         {"id": "iced_coffee", "name": "Iced Coffee", "scrip": 8}
+      ]
+    },
+    {
+      "name": "NOODLES",
+      "icon": "🍜",
+      "items": [
+        {"id": "noodles_char_siu", "name": "Noodles w char siu", "scrip": 10},
+        {"id": "noodles_veg", "name": "Noodles vegetarian", "scrip": 9}
       ]
     },
     {
       "name": "PORTUGUESE BEAN SOUP",
       "icon": "🥣",
       "items": [
-        {"id": "soup_8", "name": "8 ounce soup", "scrip": 5},
-        {"id": "soup_16", "name": "16 ounce soup", "scrip": 9},
-        {"id": "soup_32", "name": "32 ounce soup", "scrip": 17}
+        {"id": "soup_16", "name": "16 ounce soup", "scrip": 10},
+        {"id": "soup_32", "name": "32 ounce soup", "scrip": 18}
+      ]
+    },
+    {
+      "name": "SAIMIN",
+      "icon": "🍜",
+      "items": [
+        {"id": "saimin", "name": "Saimin", "scrip": 8},
+        {"id": "hot_dog", "name": "Hot Dog", "scrip": 8},
+        {"id": "spam_musubi", "name": "Spam Musubi", "scrip": 8}
       ]
     },
     {
       "name": "SMOOTHIE",
       "icon": "🍓",
       "items": [
-        {"id": "smoothie", "name": "Smoothie", "scrip": 9}
+        {"id": "smoothie_dairy", "name": "Smoothie (dairy)", "scrip": 10},
+        {"id": "smoothie_nondairy", "name": "Smoothie (non-dairy)", "scrip": 12}
       ]
     },
     {
       "name": "TACO SALAD & NACHOS",
       "icon": "🌮",
       "items": [
-        {"id": "taco_salad", "name": "Taco Salad", "scrip": 10},
-        {"id": "nachos", "name": "Cheese Nachos", "scrip": 6}
+        {"id": "taco_salad", "name": "Taco Salad", "scrip": 11},
+        {"id": "beef_nachos", "name": "Beef Nachos with Cheese", "scrip": 9},
+        {"id": "cheese_nachos", "name": "Cheese Nachos", "scrip": 7}
+      ]
+    },
+    {
+      "name": "TERI BURGER",
+      "icon": "🍔",
+      "items": [
+        {"id": "teri_burger", "name": "Teri Burger", "scrip": 9},
+        {"id": "teri_cheese", "name": "Teri Burger with Cheese", "scrip": 10}
       ]
     }
   ],

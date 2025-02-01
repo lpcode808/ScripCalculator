@@ -21,6 +21,17 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 - Mobile-first design
 - Uses Google Fonts (Merriweather & Overpass)
 
+## Changes from 2024
+- Chili/Rice Bowl booth discontinued
+- Added Hawaiian Plate options
+- Added Noodles booth
+- Added Saimin booth with Hot Dog and Spam Musubi options
+- Malasada prices doubled (now 2 scrip each, 22 scrip/dozen)
+- Portuguese Bean Soup: removed 8oz option, adjusted other sizes
+- Smoothie now offers dairy (10 scrip) and non-dairy (12 scrip) options
+- Updated Taco Salad & Nachos prices
+- Renamed Hamburger booth to Teri Burger
+
 ## Development
 To run locally:
 ```bash
