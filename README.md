@@ -5,9 +5,59 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 ## Features
 - Real-time scrip calculation
 - Mobile-optimized interface
-- Collapsible categories
-- Order summary
+- Collapsible categories with emoji icons
+- Order summary with running totals
 - Automatic cost calculation (sheets of 20 scrip)
+- Mobile-first responsive design
+- Clean, modern UI with Merriweather and Overpass fonts
+- Version tracking with timestamps
+
+## Implementation Details
+- Component-based structure for maintainability
+- Data-driven approach with separate menu.json
+- Real-time calculations and updates
+- No build tools required - pure HTML/CSS/JS
+- Optimized for mobile touch interactions
+- Collapsible sections to manage screen space
+- Persistent header with running totals
+
+## Changes for 2025
+### Booth Changes
+- Chili/Rice Bowl booth discontinued
+- Added Hawaiian Plate booth with kalua pig and vegetarian options
+- Added Noodles booth with char siu and vegetarian options
+- Added Saimin booth with Hot Dog and Spam Musubi options
+- Renamed Hamburger booth to Teri Burger
+
+### Price Updates
+- Malasada prices doubled (now 2 scrip each, 22 scrip/dozen)
+- Portuguese Bean Soup: removed 8oz option, adjusted other sizes
+- Smoothie now offers dairy (10 scrip) and non-dairy (12 scrip) options
+- Updated Taco Salad & Nachos prices and options
+  - Added Beef Nachos with Cheese
+  - Adjusted prices for all items
+
+## Historical Changes
+### 2024
+- EK back in full
+- Hawaiian Plate Split
+- Added Chili/Rice
+
+### 2023
+- 2 days
+- Price updates
+- Omitted ice cream, sweets, games, and rides
+
+### 2022
+- 1 day, Punahou only
+- Updated prices
+- Added emojis ⚡️
+
+### 2021
+- Drive-thru only
+
+### 2017-2020
+- Initial versions
 
 ## Usage
 1. Browse food categories
@@ -15,26 +65,16 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 3. View total scrip needed and cost
 4. Use order summary to review selections
 
-## Technical Details
-- Pure HTML/CSS/JavaScript
-- No build tools required
-- Mobile-first design
-- Uses Google Fonts (Merriweather & Overpass)
-
-## Changes from 2024
-- Chili/Rice Bowl booth discontinued
-- Added Hawaiian Plate options
-- Added Noodles booth
-- Added Saimin booth with Hot Dog and Spam Musubi options
-- Malasada prices doubled (now 2 scrip each, 22 scrip/dozen)
-- Portuguese Bean Soup: removed 8oz option, adjusted other sizes
-- Smoothie now offers dairy (10 scrip) and non-dairy (12 scrip) options
-- Updated Taco Salad & Nachos prices
-- Renamed Hamburger booth to Teri Burger
-
 ## Development
 To run locally:
 ```bash
 python3 -m http.server 8000
 ```
-Then visit `http://localhost:8000` 
+Then visit `http://localhost:8000`
+
+## Disclaimer
+"Not responsible for miscalculations, miscommunications, mismeasurements
+or more malasadas munched than you meant"
+
+Email justinlai@alum.mit.edu with any mistakes you catch
+
