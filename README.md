@@ -6,7 +6,7 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 - Real-time scrip calculation
 - Mobile-optimized interface
 - Collapsible categories with emoji icons
-- Order summary with running totals
+- Order summary with running totals woot
 - Automatic cost calculation (sheets of 20 scrip)
 - Mobile-first responsive design
 - Clean, modern UI with Merriweather and Overpass fonts
