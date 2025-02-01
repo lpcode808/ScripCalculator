@@ -7,7 +7,7 @@
     --text-color: #4A2511;        /* Brown text */
     --border-color: #ddd;
     --background-color: #F5F5F5;
-    --header-height: 120px;       /* Reduced header height */
+    --header-height: 130px;       /* Reduced header height */
 }
 
 body {
@@ -36,7 +36,7 @@ body {
     left: 0;
     right: 0;
     min-height: var(--header-height);
-    background: #f4f9f4;  /* Light green background */
+    background: #f0f7f0;  /* Very light green background */
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 100;
@@ -57,17 +57,17 @@ body {
     font-family: 'Overpass', sans-serif;
     font-size: 0.9em !important;
     color: #666;
-    line-height: 1.4;  /* Added line height */
+    line-height: 1.4;
 }
 
 .info a {
-    color: var(--dark-green);
+    color: #2E7D32;  /* Exact green from scrip bubbles */
     text-decoration: none;
     font-weight: 500;
 }
 
 .info a:visited {
-    color: var(--dark-green);  /* Keep same color even after visited */
+    color: #2E7D32;  /* Keep same green even after visited */
 }
 
 .info a:hover {
@@ -261,7 +261,7 @@ body {
 
 /* Items container */
 .items {
-    transition: all 0.3s ease-out;
+    transition: all 0.1s ease-out;
     max-height: 2000px;
     opacity: 1;
 }
