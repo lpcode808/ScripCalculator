@@ -19,11 +19,11 @@
       ]
     },
     {
-      "name": "GYROS",
+      "name": "GYROS: NEW LOCATION",
       "icon": "🥙",
       "items": [
-        {"id": "gyros", "name": "Gyros", "scrip": 15},
-        {"id": "veg_gyros", "name": "Vegetarian Gyros", "scrip": 8}
+        {"id": "gyros", "name": "Gyro", "scrip": 15, "description": "Warm pita bread filled with seasoned meat or falafel, topped with fresh vegetables and tzatziki sauce"},
+        {"id": "veg_gyros", "name": "Vegetarian Gyro", "scrip": 8}
       ]
     },
     {
@@ -52,10 +52,10 @@
       ]
     },
     {
-      "name": "PORTUGUESE BEAN SOUP",
+      "name": "PORTUGUESE BEAN SOUP: NEW LOCATION",
       "icon": "🥣",
       "items": [
-        {"id": "soup_16", "name": "16 ounce soup", "scrip": 10},
+        {"id": "soup_16", "name": "16 ounce soup", "scrip": 10, "description": "Traditional Portuguese bean soup with ham hocks, kidney beans, cabbage, carrots, and Portuguese sausage"},
         {"id": "soup_32", "name": "32 ounce soup", "scrip": 18}
       ]
     },

@@ -7,7 +7,7 @@
     --text-color: #4A2511;        /* Brown text */
     --border-color: #ddd;
     --background-color: #F5F5F5;
-    --header-height: 180px;       /* Reduced header height */
+    --header-height: 120px;       /* Reduced header height */
 }
 
 body {
@@ -79,7 +79,7 @@ body {
     justify-content: space-between;
     font-family: 'Merriweather', serif;
     font-weight: 700;
-    font-size: 1.1em;
+    font-size: 0.9em;
     position: relative;
 }
 
@@ -209,7 +209,7 @@ body {
 /* Responsive design */
 @media (max-width: 600px) {
     :root {
-        --header-height: 200px;  /* Reduced mobile header height */
+        --header-height: 130px;  /* Reduced mobile header height */
     }
     
     .total-display {
@@ -219,10 +219,6 @@ body {
     .total-display div {
         font-size: 1em;
         margin: 2px 0;
-    }
-    
-    body {
-        padding-top: calc(var(--header-height) + 8px);  /* Adjusted mobile padding */
     }
     
     .category {
@@ -245,23 +241,21 @@ body {
 }
 
 /* Utility classes */
-.hidden {
-    display: none;
-}
-
 .text-right {
     text-align: right;
 }
 
 /* Items container */
 .items {
-    transition: max-height 0.3s ease-out;
-    max-height: 2000px; /* Arbitrary large height */
-    overflow: hidden;
+    transition: all 0.3s ease-out;
+    max-height: 2000px;
+    opacity: 1;
 }
 
 .items.hidden {
     max-height: 0;
+    opacity: 0;
+    display: block !important; /* Override general hidden class */
 }
 
 /* Order Summary styles */
@@ -305,8 +299,7 @@ body {
 }
 
 .summary-content.hidden {
-    max-height: 0;
-    padding: 0;
+    display: none;
 }
 
 .summary-item {
@@ -358,4 +351,38 @@ body {
 /* Adjust bottom margin to prevent overlap with floating totals */
 #categories {
     margin-bottom: 80px;
+}
+
+/* Category description */
+.category-description {
+    padding: 12px 15px;
+    font-size: 0.9em;
+    color: #666;
+    background: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Overpass', sans-serif;
+    line-height: 1.4;
+    display: none;
+}
+
+.category:has(.items:not(.hidden)) .category-description {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .category-description {
+        padding: 10px 12px;
+        font-size: 0.85em;
+    }
+}
+
+.item-description {
+    display: block;
+    font-family: 'Overpass', sans-serif;
+    font-size: 0.85em;
+    color: #666;
+    font-weight: normal;
+    margin-top: 4px;
+    line-height: 1.4;
+    font-style: italic;
 } 

@@ -93,3 +93,20 @@ To test locally, we'll need to run a simple HTTP server. Would you like me to he
 2. Monitor for any price updates
 3. Gather user feedback
 4. Consider adding offline support if needed
+
+## 2025-01-31 22:11 HST - Location Updates and UI Improvements
+- **Menu Updates**:
+  - Added "NEW LOCATION" indicator to Gyros and Portuguese Bean Soup sections
+  - Attempted to add descriptive text for Gyros and Portuguese Bean Soup items
+  - Gyros description: "Warm pita bread filled with seasoned meat or falafel, topped with fresh vegetables and tzatziki sauce"
+  - Portuguese Bean Soup description: "Traditional Portuguese bean soup with ham hocks, kidney beans, cabbage, carrots, and Portuguese sausage"
+
+- **UI Improvements**:
+  - Optimized header height and spacing for better mobile display
+  - Reduced empty space at top of mobile view
+  - Improved category toggle behavior
+
+- **Next Steps**:
+  - Consider alternative ways to display booth descriptions/details
+  - Continue monitoring for any location or menu changes
+  - Gather user feedback on mobile layout improvements

@@ -36,11 +36,16 @@ function renderMenu() {
                 </div>
                 <div class="total" id="total-${category.name}">0 scrip</div>
             </div>
-            <div id="${category.name}" class="items">
-                ${category.items.map(item => `
+            <div id="${category.name}" class="items hidden">
+                ${category.items.map((item, index) => `
                     <div class="item-row">
                         <div class="item-info">
-                            <span class="item-name">${item.name}</span>
+                            <span class="item-name">
+                                ${item.name}
+                                ${index === 0 && item.description ? `
+                                    <br><span class="item-description">${item.description}</span>
+                                ` : ''}
+                            </span>
                             <span class="scrip-amount">${item.scrip} scrip</span>
                         </div>
                         <div class="quantity-control">
@@ -74,10 +79,16 @@ function renderMenu() {
 // Toggle category visibility
 function toggleCategory(categoryId, header) {
     const element = document.getElementById(categoryId);
+    const description = document.getElementById(`desc-${categoryId}`);
     
     // Toggle the collapsed state
     element.classList.toggle('hidden');
     header.classList.toggle('collapsed');
+    
+    // Toggle description if it exists
+    if (description) {
+        description.style.display = element.classList.contains('hidden') ? 'none' : 'block';
+    }
     
     // Always show the current total, regardless of collapsed state
     const categoryItems = menuData.categories.find(cat => cat.name === categoryId).items;
