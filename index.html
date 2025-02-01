@@ -15,26 +15,28 @@
         <div>Scrip needed: <span id="total-scrip">0</span></div>
         <div>Total cost: $<span id="total-cost">0.00</span></div>
         <div class="info">(1 scrip = 50¢, $10 for sheet of 20 scrip)</div>
-        <div class="info"><a href="https://www.punahou.edu/news-and-events/carnival/carnival-2025">🤠 Carnival 2025</a></div>
-        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709651.pdf">🧾 Price list</a></div>
-        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709437.pdf">🗺️ Map</a></div>
-        <div class="info"><a href="https://github.com/lpcode808/ScripCalculator#readme" target="_blank">👋 About this app</a></div>
+        <div class="info"><a href="https://www.punahou.edu/news-and-events/carnival/carnival-2025">🤠 Carnival 2025</a> / <a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709651.pdf">🧾 Price list</a></div>
+        <div class="info"></div>
+        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709437.pdf">🗺️ Map</a> / <a href="https://github.com/lpcode808/ScripCalculator#readme" target="_blank">👋 About this app</a></div>
+        <div class="info"></div>
         <div class="last-updated">Version: 1/31/2025 9:38 PM HST</div>
     </div>
 
-    <div class="order-summary">
-        <div class="summary-header" onclick="toggleSummary()">
-            <span class="summary-title">Order Summary</span>
-            <span class="toggle-icon">▼</span>
+    <div class="page-container">
+        <div class="order-summary">
+            <div class="summary-header" onclick="toggleSummary()">
+                <span class="summary-title">Order Summary</span>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div id="summary-content" class="summary-content">
+                <!-- Summary items will be dynamically inserted here -->
+                <div class="empty-message">No items added yet</div>
+            </div>
         </div>
-        <div id="summary-content" class="summary-content">
-            <!-- Summary items will be dynamically inserted here -->
-            <div class="empty-message">No items added yet</div>
-        </div>
-    </div>
 
-    <div id="categories">
-        <!-- Menu categories will be dynamically inserted here -->
+        <div id="categories">
+            <!-- Menu categories will be dynamically inserted here -->
+        </div>
     </div>
 
     <script src="js/main.js"></script>

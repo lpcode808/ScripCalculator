@@ -7,15 +7,26 @@
     --text-color: #4A2511;        /* Brown text */
     --border-color: #ddd;
     --background-color: #F5F5F5;
+    --header-height: 180px;       /* Reduced header height */
 }
 
 body {
     font-family: 'Overpass', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
-    padding-top: 120px;  /* Adjust based on your header height */
+    padding: 0;
     color: var(--text-color);
     line-height: 1.6;
     background-color: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout structure */
+.page-container {
+    margin-top: var(--header-height);
+    flex: 1;
+    padding: 10px;
 }
 
 /* Header styles */
@@ -24,26 +35,29 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    min-height: var(--header-height);  /* Changed to min-height */
     background: white;
-    padding: 15px;
-    padding-bottom: 25px;  /* Make room for timestamp */
+    padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 100;
     border-bottom: 1px solid var(--border-color);
     text-align: center;
     font-family: 'Merriweather', serif;
-    position: relative;  /* For absolute positioning of timestamp */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  /* Changed to flex-start */
 }
 
 .total-display div {
-    font-size: 1.2em;
-    margin: 5px 0;
+    font-size: 1em;
+    margin: 3px 0;
 }
 
 .info {
     font-family: 'Overpass', sans-serif;
     font-size: 0.9em !important;
     color: #666;
+    line-height: 1.4;  /* Added line height */
 }
 
 /* Category styles */
@@ -194,6 +208,23 @@ body {
 
 /* Responsive design */
 @media (max-width: 600px) {
+    :root {
+        --header-height: 200px;  /* Reduced mobile header height */
+    }
+    
+    .total-display {
+        padding: 8px 12px;
+    }
+    
+    .total-display div {
+        font-size: 1em;
+        margin: 2px 0;
+    }
+    
+    body {
+        padding-top: calc(var(--header-height) + 8px);  /* Adjusted mobile padding */
+    }
+    
     .category {
         margin: 8px;
     }
@@ -235,7 +266,7 @@ body {
 
 /* Order Summary styles */
 .order-summary {
-    margin: 10px;
+    margin: 8px 10px;  /* Adjusted margin */
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -312,10 +343,11 @@ body {
     position: absolute;
     bottom: 5px;
     right: 10px;
-    font-size: 0.8em !important;
+    font-size: 0.75em !important;
     color: #666;
     font-family: 'Overpass', sans-serif;
-    margin: 0 !important;
+    margin: 2px 0 !important;
+    text-align: right;
 }
 
 /* Floating totals */
