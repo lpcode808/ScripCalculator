@@ -76,5 +76,8 @@ Then visit `http://localhost:8000`
 "Not responsible for miscalculations, miscommunications, mismeasurements
 or more malasadas munched than you meant"
 
-Email justinlai@alum.mit.edu with any mistakes you catch
+Email justinlai@alum.mit.edu with any mistakes you catch.
+This was created with the help of AI. I learned a lot!
+
+While I am no longer currently working at Punahou, I am grateful for the opportunity to have been a part of the community. Mahalo to all who have kept in touch. This is my token of appreciation for you. Until we meet again!
 
