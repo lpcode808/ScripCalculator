@@ -81,3 +81,5 @@ This was created with the help of AI. I learned a lot!
 
 While I am no longer currently working at Punahou, I am grateful for the opportunity to have been a part of the community. Mahalo to all who have kept in touch. This is my token of appreciation for you. Until we meet again!
 
+If you have ideas for simple web apps, I'm curious about how it might be made!
+
