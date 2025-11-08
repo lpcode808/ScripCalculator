@@ -8,33 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Overpass:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Inline critical CSS to prevent FOUC */
+        body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    </style>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="total-display">
-        <div>Scrip: <span id="total-scrip">0</span> // Total: $<span id="total-cost">0.00</span></div>
+    <div class="total-display" role="banner" aria-label="Order totals and information">
+        <div role="status" aria-live="polite">Scrip: <span id="total-scrip">0</span> // Total: $<span id="total-cost">0.00</span></div>
         <div class="info"><i>rounds up to nearest $10</i></div>
         <div class="info">(1 scrip = 50¢, $10 for sheet of 20 scrip)</div>
-        <div class="info"><a href="https://www.punahou.edu/news-and-events/carnival/carnival-2025" target="_blank">🤠 Carnival 2025</a> // <a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709651.pdf" target="_blank">🧾 prices</a></div>
+        <div class="info"><a href="https://www.punahou.edu/news-and-events/carnival/carnival-2025" target="_blank" rel="noopener noreferrer">🤠 Carnival 2025</a> // <a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709651.pdf" target="_blank" rel="noopener noreferrer">🧾 prices</a></div>
         <div class="info"></div>
-        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709437.pdf" target="_blank">🗺️ map</a> // <a href="https://github.com/lpcode808/ScripCalculator#readme" target="_blank">👋 about this app</a></div>
+        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709437.pdf" target="_blank" rel="noopener noreferrer">🗺️ map</a> // <a href="https://github.com/lpcode808/ScripCalculator#readme" target="_blank" rel="noopener noreferrer">👋 about this app</a></div>
         <div class="info"></div>
         <div class="last-updated">updated: 1/31/2025 10:20 PM HST</div>
     </div>
 
     <div class="page-container">
         <div class="order-summary">
-            <div class="summary-header" onclick="toggleSummary()">
+            <button class="summary-header" onclick="toggleSummary()" aria-expanded="true" aria-controls="summary-content">
                 <span class="summary-title">Order Summary</span>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div id="summary-content" class="summary-content">
+                <span class="toggle-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="summary-content" class="summary-content" role="region" aria-label="Order summary">
                 <!-- Summary items will be dynamically inserted here -->
                 <div class="empty-message">No items added yet</div>
             </div>
         </div>
 
-        <div id="categories">
+        <div id="categories" role="main" aria-label="Menu categories">
             <!-- Menu categories will be dynamically inserted here -->
         </div>
     </div>
