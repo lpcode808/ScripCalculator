@@ -1,0 +1,18 @@
+{
+  "name": "scrip-calculator",
+  "version": "2.0.0",
+  "description": "Punahou Carnival 2025 - Scrip Calculator",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["carnival", "scrip", "calculator", "punahou"],
+  "author": "lpcode808",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0"
+  }
+}

@@ -1,4 +1,10 @@
 .DS_Store
 node_modules/
 .env
-*.log 
+*.log
+
+# Build output
+dist/
+
+# Lock files
+package-lock.json 
