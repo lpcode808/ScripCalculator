@@ -113,8 +113,8 @@
     }
   ],
   "scripInfo": {
-    "scripPerDollar": 2,
+    "scripPerDollar": 1,
     "scripSheetCost": 10,
-    "scripPerSheet": 20
+    "scripPerSheet": 10
   }
 }
