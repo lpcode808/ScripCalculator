@@ -1,14 +1,40 @@
 // Global state
 let menuData = null;
 let orderQuantities = {};  // Single order quantities object
+let categoryById = {};
+let itemById = {};
+
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+function buildIndexes() {
+    categoryById = {};
+    itemById = {};
+    menuData.categories.forEach(category => {
+        const categoryId = slugify(category.name);
+        categoryById[categoryId] = category;
+        category.items.forEach(item => {
+            itemById[item.id] = item;
+        });
+    });
+}
 
 // Fetch and initialize menu data
 async function initializeApp() {
     try {
         const response = await fetch('data/menu.json');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
         menuData = await response.json();
+        buildIndexes();
         renderMenu();
         attachEventListeners();
+        updateTotals();
     } catch (error) {
         console.error('Failed to initialize app:', error);
         document.body.innerHTML = '<div class="error">Failed to load menu data. Please refresh the page.</div>';
@@ -27,16 +53,18 @@ function calculateCategoryTotal(categoryItems) {
 // Render the menu structure
 function renderMenu() {
     const container = document.getElementById('categories');
-    container.innerHTML = menuData.categories.map(category => `
+    container.innerHTML = menuData.categories.map(category => {
+        const categoryId = slugify(category.name);
+        return `
         <div class="category">
-            <div class="category-header" data-category="${category.name}">
+            <div class="category-header" data-category-id="${categoryId}">
                 <div class="left">
                     <span class="icon">${category.icon}</span>
                     ${category.name}
                 </div>
-                <div class="total" id="total-${category.name}">0 scrip</div>
+                <div class="total" id="total-${categoryId}">0 scrip</div>
             </div>
-            <div id="${category.name}" class="items hidden">
+            <div id="${categoryId}" class="items hidden">
                 ${category.items.map((item, index) => `
                     <div class="item-row">
                         <div class="item-info">
@@ -49,58 +77,71 @@ function renderMenu() {
                             <span class="scrip-amount">${item.scrip} scrip</span>
                         </div>
                         <div class="quantity-control">
-                            <button class="quantity-btn minus" onclick="adjustQuantity('${item.id}', -1)">−</button>
+                            <button class="quantity-btn minus" type="button" aria-label="Decrease ${item.name}" onclick="adjustQuantity('${item.id}', -1)">−</button>
                             <input type="number" 
                                 class="quantity-input" 
                                 data-item-id="${item.id}"
-                                data-category="${category.name}"
+                                data-category-id="${categoryId}"
                                 min="0" 
                                 value="0" 
-                                onchange="updateQuantity('${item.id}', this.value)"
+                                oninput="updateQuantity('${item.id}', this.value)"
                                 inputmode="numeric"
-                                pattern="[0-9]*">
-                            <button class="quantity-btn plus" onclick="adjustQuantity('${item.id}', 1)">+</button>
+                                pattern="[0-9]*"
+                                aria-label="${item.name} quantity">
+                            <button class="quantity-btn plus" type="button" aria-label="Increase ${item.name}" onclick="adjustQuantity('${item.id}', 1)">+</button>
                         </div>
                     </div>
                 `).join('')}
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
 
     // Add click handlers for category headers
     document.querySelectorAll('.category-header').forEach(header => {
         header.addEventListener('click', () => {
-            const categoryId = header.dataset.category;
+            const categoryId = header.dataset.categoryId;
             toggleCategory(categoryId, header);
         });
+    });
+}
+
+function updateCategoryTotal(categoryId) {
+    const category = categoryById[categoryId];
+    if (!category) return;
+
+    const categoryTotal = calculateCategoryTotal(category.items);
+    const total = document.getElementById(`total-${categoryId}`);
+    if (total) {
+        total.textContent = `${categoryTotal} scrip`;
+    }
+}
+
+function updateAllCategoryTotals() {
+    Object.keys(categoryById).forEach(categoryId => {
+        updateCategoryTotal(categoryId);
     });
 }
 
 // Toggle category visibility
 function toggleCategory(categoryId, header) {
     const element = document.getElementById(categoryId);
-    const description = document.getElementById(`desc-${categoryId}`);
-    
+    if (!element) return;
+
     // Toggle the collapsed state
     element.classList.toggle('hidden');
     header.classList.toggle('collapsed');
-    
-    // Toggle description if it exists
-    if (description) {
-        description.style.display = element.classList.contains('hidden') ? 'none' : 'block';
-    }
-    
+
     // Always show the current total, regardless of collapsed state
-    const categoryItems = menuData.categories.find(cat => cat.name === categoryId).items;
-    const categoryTotal = calculateCategoryTotal(categoryItems);
-    const total = document.getElementById(`total-${categoryId}`);
-    total.textContent = `${categoryTotal} scrip`;
+    updateCategoryTotal(categoryId);
 }
 
 // Adjust quantity with buttons
 function adjustQuantity(itemId, delta) {
     const input = document.querySelector(`input[data-item-id="${itemId}"]`);
-    const newValue = Math.max(0, parseInt(input.value || 0) + delta);
+    if (!input) return;
+
+    const newValue = Math.max(0, parseInt(input.value || 0, 10) + delta);
     input.value = newValue;
     updateQuantity(itemId, newValue);
 }
@@ -113,6 +154,20 @@ function toggleSummary() {
     icon.classList.toggle('collapsed');
 }
 
+function clearAll(event) {
+    if (event) {
+        event.stopPropagation();
+    }
+    orderQuantities = {};
+
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        input.value = 0;
+    });
+
+    updateAllCategoryTotals();
+    updateTotals();
+}
+
 // Update summary content
 function updateSummary() {
     const summaryContent = document.getElementById('summary-content');
@@ -120,8 +175,9 @@ function updateSummary() {
         .filter(([_, qty]) => qty > 0)
         .map(([itemId, qty]) => {
             const item = findItem(itemId);
-            return { name: item.name, quantity: qty, scrip: item.scrip };
-        });
+            return item ? { name: item.name, quantity: qty, scrip: item.scrip } : null;
+        })
+        .filter(Boolean);
 
     if (items.length === 0) {
         summaryContent.innerHTML = '<div class="empty-message">No items added yet</div>';
@@ -138,29 +194,7 @@ function updateSummary() {
         .join('');
 }
 
-// Update quantity and recalculate totals
-function updateQuantity(itemId, quantity) {
-    const numQuantity = parseInt(quantity) || 0;
-    orderQuantities[itemId] = Math.max(0, numQuantity); // Ensure non-negative
-    
-    // Update input value to ensure valid number
-    const input = document.querySelector(`input[data-item-id="${itemId}"]`);
-    input.value = orderQuantities[itemId];
-    
-    // Get category for this item
-    const categoryName = input.dataset.category;
-    const category = menuData.categories.find(cat => cat.name === categoryName);
-    
-    // Update category total
-    if (category) {
-        const categoryTotal = calculateCategoryTotal(category.items);
-        const totalElement = document.getElementById(`total-${categoryName}`);
-        if (totalElement) {
-            totalElement.textContent = `${categoryTotal} scrip`;
-        }
-    }
-    
-    // Calculate grand total
+function updateTotals() {
     let totalScrip = 0;
     Object.entries(orderQuantities).forEach(([itemId, qty]) => {
         const item = findItem(itemId);
@@ -168,25 +202,47 @@ function updateQuantity(itemId, quantity) {
             totalScrip += item.scrip * qty;
         }
     });
-    
-    // Round up to nearest sheet
-    const sheetsNeeded = Math.ceil(totalScrip / menuData.scripInfo.scripPerSheet);
+
+    const sheetsNeeded = totalScrip === 0
+        ? 0
+        : Math.ceil(totalScrip / menuData.scripInfo.scripPerSheet);
     const totalCost = (sheetsNeeded * menuData.scripInfo.scripSheetCost).toFixed(2);
-    
-    // Update displays
+
     document.getElementById('total-scrip').textContent = totalScrip;
     document.getElementById('total-cost').textContent = totalCost;
-    
+
     updateSummary();
+}
+
+// Update quantity and recalculate totals
+function updateQuantity(itemId, quantity) {
+    const numQuantity = Math.max(0, parseInt(quantity, 10) || 0);
+    if (numQuantity === 0) {
+        delete orderQuantities[itemId];
+    } else {
+        orderQuantities[itemId] = numQuantity;
+    }
+
+    // Update input value to ensure valid number
+    const input = document.querySelector(`input[data-item-id="${itemId}"]`);
+    if (input) {
+        input.value = numQuantity;
+    }
+
+    // Get category for this item
+    const categoryId = input ? input.dataset.categoryId : null;
+
+    // Update category total
+    if (categoryId) {
+        updateCategoryTotal(categoryId);
+    }
+
+    updateTotals();
 }
 
 // Helper function to find item by ID
 function findItem(itemId) {
-    for (const category of menuData.categories) {
-        const item = category.items.find(item => item.id === itemId);
-        if (item) return item;
-    }
-    return null;
+    return itemById[itemId] || null;
 }
 
 // Attach event listeners
@@ -197,4 +253,4 @@ function attachEventListeners() {
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
-}); 
+});

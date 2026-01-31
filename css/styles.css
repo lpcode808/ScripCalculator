@@ -225,29 +225,29 @@ body {
     :root {
         --header-height: 130px;  /* Reduced mobile header height */
     }
-    
+
     .total-display {
         padding: 8px 12px;
     }
-    
+
     .total-display div {
         font-size: 1em;
         margin: 2px 0;
     }
-    
+
     .category {
         margin: 8px;
     }
-    
+
     .item-row {
         padding: 12px;
     }
-    
+
     .quantity-btn {
         width: 48px;
         height: 48px;
     }
-    
+
     .quantity-input {
         width: 45px;
         height: 48px;
@@ -295,6 +295,28 @@ body {
 
 .summary-title {
     font-size: 1.1em;
+}
+
+.summary-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.clear-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.85em;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.clear-btn:active {
+    transform: scale(0.97);
 }
 
 .toggle-icon {
@@ -399,4 +421,4 @@ body {
     margin-top: 4px;
     line-height: 1.4;
     font-style: italic;
-} 
+}

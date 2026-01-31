@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Punahou Carnival 2025 - Scrip Calculator</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤠</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +15,9 @@
         <div>Scrip: <span id="total-scrip">0</span> // Total: $<span id="total-cost">0.00</span></div>
         <div class="info"><i>rounds up to nearest $10</i></div>
         <div class="info">(1 scrip = 50¢, $10 for sheet of 20 scrip)</div>
-        <div class="info"><a href="https://www.punahou.edu/news-and-events/carnival/carnival-2025" target="_blank">🤠 Carnival 2025</a> // <a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709651.pdf" target="_blank">🧾 prices</a></div>
+        <div class="info"><a href="https://www.punahou.edu/news-and-events/carnival/carnival-2025" target="_blank" rel="noopener">🤠 Carnival 2025</a> // <a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709651.pdf" target="_blank" rel="noopener">🧾 prices</a></div>
         <div class="info"></div>
-        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709437.pdf" target="_blank">🗺️ map</a> // <a href="https://github.com/lpcode808/ScripCalculator#readme" target="_blank">👋 about this app</a></div>
+        <div class="info"><a href="https://punahou.myschoolapp.com/ftpimages/1406/download/download_10709437.pdf" target="_blank" rel="noopener">🗺️ map</a> // <a href="https://github.com/lpcode808/ScripCalculator#readme" target="_blank" rel="noopener">👋 about this app</a></div>
         <div class="info"></div>
         <div class="last-updated">updated: 1/31/2025 10:20 PM HST</div>
     </div>
@@ -26,7 +26,10 @@
         <div class="order-summary">
             <div class="summary-header" onclick="toggleSummary()">
                 <span class="summary-title">Order Summary</span>
-                <span class="toggle-icon">▼</span>
+                <div class="summary-actions">
+                    <button class="clear-btn" type="button" onclick="clearAll(event)" aria-label="Clear all items">Clear</button>
+                    <span class="toggle-icon">▼</span>
+                </div>
             </div>
             <div id="summary-content" class="summary-content">
                 <!-- Summary items will be dynamically inserted here -->

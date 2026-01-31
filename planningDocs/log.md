@@ -1,5 +1,34 @@
 # Implementation Log
 
+## [2026-01-30 21:15] Claude Code - Port Improvements from -yolo
+
+**Task**: Backport performance and accessibility improvements to main ScripCalculator repo (ready for QC approval)
+
+**Actions Taken**:
+- Ported hash map indexing (categoryById, itemById) for O(1) lookups
+- Added slugify() function for safer DOM IDs
+- Implemented Clear button in order summary
+- Enhanced accessibility:
+  - Removed user-scalable=no from viewport meta tag
+  - Added aria-label attributes to buttons
+  - Added type="button" to prevent form submission
+  - Added rel="noopener" to all external links (security)
+- Improved error handling with HTTP status check
+- Changed input event from onchange to oninput (real-time updates)
+- Better code organization (buildIndexes, updateTotals, clearAll functions)
+- Copied AGENT-GUIDE.md and plan.md for documentation
+
+**Key Insights**:
+- ScripCalculator-yolo improvements are production-ready
+- All improvements maintain vanilla JS approach (no new dependencies)
+- Performance gains from hash maps are significant for larger menus
+- Accessibility improvements align with educational tech standards
+- Ready for quality control review before deployment
+
+**Project(s) Affected**: ScripCalculator (main production repo)
+
+---
+
 ## 2025-01-29 09:42:36 HST - Initial Implementation Plan
 
 ### Phase 1: Local Development Setup
