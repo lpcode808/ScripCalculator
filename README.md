@@ -1,6 +1,8 @@
-# Punahou Carnival 2025 Scrip Calculator 🤠
+# Punahou Carnival 2026 Scrip Calculator 🦜
 
-A mobile-friendly web app to help calculate scrip needed for food purchases at the Punahou Carnival 2025.
+## Welcome to the Jungle! 🌴
+
+A mobile-friendly web app to help calculate scrip needed for food purchases at the Punahou Carnival 2026.
 
 ## Features
 - Real-time scrip calculation
@@ -20,6 +22,22 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 - Optimized for mobile touch interactions
 - Collapsible sections to manage screen space
 - Persistent header with running totals
+
+## Changes for 2026
+### Theme
+- **Welcome to the Jungle!** - Tropical jungle theme with vibrant greens and yellows
+- Updated color scheme: Deep jungle greens, bright carnival yellow, tropical parrot accents
+
+### Menu Updates
+- Updated all prices for 2026 carnival
+- Reorganized categories for better navigation
+- Removed "NEW LOCATION" tags (no longer new!)
+- Price reductions across most items
+
+### Design Improvements
+- Jungle-themed color palette inspired by 2026 carnival artwork
+- Gradient header with tropical vibes
+- Enhanced accessibility with improved contrast
 
 ## Changes for 2025
 ### Booth Changes

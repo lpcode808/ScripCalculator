@@ -1,13 +1,15 @@
-/* Base styles */
+/* Base styles - 2026 Welcome to the Jungle Theme */
 :root {
-    --primary-color: #4A2511;     /* Brown from logo */
-    --secondary-color: #8CC63F;   /* Green from hills */
-    --dark-green: #2E7D32;        /* Dark green for totals */
-    --accent-color: #87CEEB;      /* Light blue from sky */
-    --text-color: #4A2511;        /* Brown text */
-    --border-color: #ddd;
-    --background-color: #F5F5F5;
+    --primary-color: #2D5016;     /* Deep jungle green (monstera leaves) */
+    --secondary-color: #8BC34A;   /* Light jungle green */
+    --dark-green: #1B4D0E;        /* Darker jungle green for depth */
+    --accent-color: #F5B700;      /* Bright carnival yellow */
+    --text-color: #2D5016;        /* Jungle green text */
+    --border-color: #AED581;      /* Light green border */
+    --background-color: #F1F8E9;  /* Very light green background */
     --header-height: 130px;       /* Reduced header height */
+    --parrot-blue: #4FC3F7;       /* Tropical parrot blue accent */
+    --parrot-orange: #FF9800;     /* Tropical parrot orange accent */
 }
 
 body {
@@ -36,7 +38,7 @@ body {
     left: 0;
     right: 0;
     min-height: var(--header-height);
-    background: #f0f7f0;  /* Very light green background */
+    background: linear-gradient(135deg, #F1F8E9 0%, #E8F5E9 100%);  /* Jungle-inspired gradient */
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 100;
@@ -56,18 +58,18 @@ body {
 .info {
     font-family: 'Overpass', sans-serif;
     font-size: 0.9em !important;
-    color: #666;
+    color: #558B2F;
     line-height: 1.4;
 }
 
 .info a {
-    color: #2E7D32;  /* Exact green from scrip bubbles */
+    color: #1B4D0E;  /* Dark jungle green for links */
     text-decoration: none;
     font-weight: 500;
 }
 
 .info a:visited {
-    color: #2E7D32;  /* Keep same green even after visited */
+    color: #1B4D0E;  /* Keep same green even after visited */
 }
 
 .info a:hover {
@@ -197,7 +199,7 @@ body {
 }
 
 .quantity-btn:active {
-    background: #7AB52F;
+    background: var(--secondary-color);
     transform: scale(0.95);
 }
 
@@ -361,7 +363,7 @@ body {
 }
 
 .empty-message {
-    color: #666;
+    color: #558B2F;
     text-align: center;
     font-style: italic;
     padding: 20px;
@@ -373,7 +375,7 @@ body {
     bottom: 5px;
     right: 10px;
     font-size: 0.75em !important;
-    color: #666;
+    color: #558B2F;
     font-family: 'Overpass', sans-serif;
     margin: 2px 0 !important;
     text-align: right;
@@ -393,8 +395,8 @@ body {
 .category-description {
     padding: 12px 15px;
     font-size: 0.9em;
-    color: #666;
-    background: #f9f9f9;
+    color: #558B2F;
+    background: #F1F8E9;
     border-bottom: 1px solid var(--border-color);
     font-family: 'Overpass', sans-serif;
     line-height: 1.4;
@@ -416,7 +418,7 @@ body {
     display: block;
     font-family: 'Overpass', sans-serif;
     font-size: 0.85em;
-    color: #666;
+    color: #558B2F;
     font-weight: normal;
     margin-top: 4px;
     line-height: 1.4;
