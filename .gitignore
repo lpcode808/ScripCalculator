@@ -1,4 +1,10 @@
 .DS_Store
 node_modules/
 .env
-*.log 
+*.log
+
+# Claude/Agent planning files (keep local only)
+CLAUDE.md
+AGENT-GUIDE.md
+plan.md
+planningDocs/ 
