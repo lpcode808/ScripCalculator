@@ -1,4 +1,8 @@
 /* Base styles - 2026 Welcome to the Jungle Theme */
+* {
+    box-sizing: border-box;  /* Ensure all elements include padding/border in width */
+}
+
 :root {
     --primary-color: #2D5016;     /* Deep jungle green (monstera leaves) */
     --secondary-color: #8BC34A;   /* Light jungle green */
@@ -22,6 +26,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
 }
 
 /* Layout structure */
@@ -29,6 +34,10 @@ body {
     margin-top: var(--header-height);
     flex: 1;
     padding: 10px;
+    max-width: 900px;  /* Constrain width on desktop */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;  /* Include padding in width calculation */
 }
 
 /* Header styles */
@@ -112,12 +121,13 @@ body {
 }
 
 .category-header .total {
-    background: var(--dark-green);
+    background: var(--accent-color);
+    color: var(--dark-green);
     padding: 4px 12px;
     border-radius: 20px;
     font-family: 'Overpass', sans-serif;
     font-size: 0.9em;
-    font-weight: 500;
+    font-weight: 600;
     margin-right: 35px;
     min-width: 60px;
     text-align: center;
@@ -222,10 +232,17 @@ body {
     margin: 0;
 }
 
-/* Responsive design */
+/* Desktop styles - wider screens need taller header due to increased line spacing */
+@media (min-width: 601px) {
+    :root {
+        --header-height: 180px;  /* Taller header for desktop */
+    }
+}
+
+/* Mobile styles */
 @media (max-width: 600px) {
     :root {
-        --header-height: 130px;  /* Reduced mobile header height */
+        --header-height: 130px;  /* Compact header height for mobile */
     }
 
     .total-display {
@@ -294,10 +311,14 @@ body {
     font-family: 'Merriweather', serif;
     font-weight: 700;
     border-radius: 12px 12px 0 0;  /* Rounded top corners */
+    min-width: 0;  /* Allow flex children to shrink below content size */
 }
 
 .summary-title {
     font-size: 1.1em;
+    min-width: 0;  /* Allow text to shrink */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .summary-actions {
