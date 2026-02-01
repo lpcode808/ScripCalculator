@@ -6,5 +6,7 @@ node_modules/
 # Claude/Agent planning files (keep local only)
 CLAUDE.md
 AGENT-GUIDE.md
+START-HERE.md
+TESTING.md
 plan.md
 planningDocs/ 
