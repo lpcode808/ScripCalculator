@@ -6,7 +6,7 @@
     --accent-color: #FDB71A;      /* Bright carnival yellow (from official artwork) */
     --text-color: #2D5016;        /* Jungle green text */
     --border-color: #AED581;      /* Light green border */
-    --background-color: #F1F8E9;  /* Very light green background */
+    --background-color: #FFFAED;  /* Light yellow creme (from carnival yellow) */
     --header-height: 130px;       /* Reduced header height */
     --parrot-blue: #4FC3F7;       /* Tropical parrot blue accent */
     --parrot-orange: #FF9800;     /* Tropical parrot orange accent */
@@ -38,7 +38,7 @@ body {
     left: 0;
     right: 0;
     min-height: var(--header-height);
-    background: linear-gradient(135deg, #F1F8E9 0%, #E8F5E9 100%);  /* Jungle-inspired gradient */
+    background: linear-gradient(135deg, #FFFDF7 0%, #FFF9E6 100%);  /* Warm creme gradient */
     padding: 10px 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 100;
@@ -396,7 +396,7 @@ body {
     padding: 12px 15px;
     font-size: 0.9em;
     color: #558B2F;
-    background: #F1F8E9;
+    background: #FFF8F0;
     border-bottom: 1px solid var(--border-color);
     font-family: 'Overpass', sans-serif;
     line-height: 1.4;
