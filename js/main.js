@@ -4,6 +4,73 @@ let orderQuantities = {};  // Single order quantities object
 let categoryById = {};
 let itemById = {};
 
+// ============================================
+// THEME MANAGEMENT
+// ============================================
+
+/**
+ * Initialize theme on page load
+ * - Checks localStorage for saved preference
+ * - Falls back to system preference
+ * - Sets up listener for system preference changes
+ */
+function initializeTheme() {
+    // Check localStorage first (user preference)
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        // Detect system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (e) => {
+            // Only auto-switch if user hasn't manually set preference
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+}
+
+/**
+ * Set theme and persist to localStorage
+ * @param {string} theme - 'light' or 'dark'
+ */
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateToggleButton(theme);
+}
+
+/**
+ * Toggle between light and dark themes
+ */
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+}
+
+/**
+ * Update toggle button icon and ARIA label
+ * @param {string} theme - Current theme
+ */
+function updateToggleButton(theme) {
+    const button = document.getElementById('theme-toggle');
+    if (!button) return;
+
+    const icon = theme === 'light' ? '🌙' : '☀️';
+    const label = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+
+    button.innerHTML = icon;
+    button.setAttribute('aria-label', label);
+    button.setAttribute('title', label);
+}
+
 function slugify(text) {
     return text
         .toLowerCase()
@@ -252,5 +319,9 @@ function attachEventListeners() {
 
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize theme before app loads (prevents flash)
+    initializeTheme();
+
+    // Initialize main app
     initializeApp();
 });

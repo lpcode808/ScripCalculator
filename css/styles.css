@@ -14,6 +14,16 @@
     --header-height: 130px;       /* Reduced header height */
     --parrot-blue: #4FC3F7;       /* Tropical parrot blue accent */
     --parrot-orange: #FF9800;     /* Tropical parrot orange accent */
+
+    /* Dark mode colors - "Night Jungle" theme */
+    --dm-background: #1A1A1A;     /* Deep charcoal night sky */
+    --dm-surface: #2A2A2A;        /* Elevated surfaces (cards) */
+    --dm-primary: #4CAF50;        /* Brighter jungle green */
+    --dm-accent: #FFC107;         /* Warm yellow (better contrast) */
+    --dm-text-primary: #E8F5E9;   /* Very light green tint */
+    --dm-text-secondary: #A5D6A7; /* Muted light green */
+    --dm-border: #3E3E3E;         /* Subtle borders */
+    --dm-category-header: #1B5E20; /* Dark forest green */
 }
 
 body {
@@ -403,12 +413,12 @@ body {
 .last-updated {
     position: absolute;
     bottom: 5px;
-    right: 10px;
+    left: 10px;
     font-size: 0.75em !important;
     color: #558B2F;
     font-family: 'Overpass', sans-serif;
     margin: 2px 0 !important;
-    text-align: right;
+    text-align: left;
 }
 
 /* Floating totals */
@@ -453,4 +463,130 @@ body {
     margin-top: 4px;
     line-height: 1.4;
     font-style: italic;
+}
+
+/* ============================================
+   DARK MODE STYLES
+   ============================================ */
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+    --background-color: var(--dm-background);
+    --text-color: var(--dm-text-primary);
+    --primary-color: var(--dm-primary);
+    --accent-color: var(--dm-accent);
+    --border-color: var(--dm-border);
+}
+
+html[data-theme="dark"] .total-display {
+    background: linear-gradient(135deg, #2A2A2A 0%, #1F1F1F 100%);
+    border-bottom: 1px solid var(--dm-border);
+}
+
+html[data-theme="dark"] .category {
+    background: var(--dm-surface);
+}
+
+html[data-theme="dark"] .category-header {
+    background: var(--dm-category-header);
+}
+
+html[data-theme="dark"] .category-header .total {
+    background: var(--dm-accent);
+    color: #1A1A1A;
+}
+
+html[data-theme="dark"] .item-row {
+    background: var(--dm-surface);
+    border-bottom: 1px solid var(--dm-border);
+}
+
+html[data-theme="dark"] .order-summary {
+    background: var(--dm-surface);
+}
+
+html[data-theme="dark"] .summary-header {
+    background: var(--dm-category-header);
+}
+
+html[data-theme="dark"] .summary-item {
+    border-bottom: 1px solid var(--dm-border);
+}
+
+html[data-theme="dark"] .info,
+html[data-theme="dark"] .empty-message,
+html[data-theme="dark"] .last-updated,
+html[data-theme="dark"] .category-description,
+html[data-theme="dark"] .item-description {
+    color: var(--dm-text-secondary);
+}
+
+html[data-theme="dark"] .info a {
+    color: var(--dm-primary);
+}
+
+html[data-theme="dark"] .info a:visited {
+    color: var(--dm-primary);
+}
+
+html[data-theme="dark"] .scrip-amount {
+    color: var(--dm-primary);
+}
+
+html[data-theme="dark"] .quantity-input {
+    background: var(--dm-surface);
+    color: var(--dm-text-primary);
+    border: 1px solid var(--dm-border);
+}
+
+html[data-theme="dark"] .category-description {
+    background: #252525;
+    border-bottom: 1px solid var(--dm-border);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .category-header,
+    .items,
+    .toggle-icon {
+        transition: none;
+    }
 }
