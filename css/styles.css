@@ -26,6 +26,11 @@
     --dm-category-header: #1B5E20; /* Dark forest green */
 }
 
+html {
+    overflow-x: hidden;  /* Prevent horizontal scrolling at root level */
+    max-width: 100%;     /* Constrain to viewport width */
+}
+
 body {
     font-family: 'Overpass', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
@@ -37,6 +42,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;  /* Prevent horizontal scrolling */
+    max-width: 100%;     /* Constrain to viewport width */
 }
 
 /* Layout structure */
@@ -44,6 +50,7 @@ body {
     margin-top: var(--header-height);
     flex: 1;
     padding: 10px;
+    width: 100%;       /* Explicit width for mobile browsers */
     max-width: 900px;  /* Constrain width on desktop */
     margin-left: auto;
     margin-right: auto;
