@@ -235,6 +235,69 @@ function clearAll(event) {
     updateTotals();
 }
 
+// Copy order summary to clipboard
+async function copySummary(event) {
+    if (event) {
+        event.stopPropagation();
+    }
+
+    // Get all items with quantities
+    const items = Object.entries(orderQuantities)
+        .filter(([_, qty]) => qty > 0)
+        .map(([itemId, qty]) => {
+            const item = findItem(itemId);
+            return item ? { name: item.name, quantity: qty, scrip: item.scrip } : null;
+        })
+        .filter(Boolean);
+
+    if (items.length === 0) {
+        return; // Nothing to copy
+    }
+
+    // Get totals
+    const totalScrip = parseInt(document.getElementById('total-scrip').textContent, 10);
+    const totalCost = document.getElementById('total-cost').textContent;
+
+    // Format summary
+    let summary = 'Punahou Carnival 2026 - Order Summary\n\n';
+    items.forEach(item => {
+        summary += `${item.name}\n`;
+        summary += `  ${item.quantity}× @ ${item.scrip} scrip = ${item.quantity * item.scrip} scrip\n\n`;
+    });
+    summary += `────────────────────\n`;
+    summary += `Total: ${totalScrip} scrip ($${totalCost})\n`;
+    summary += `(rounds up to nearest $10)\n`;
+
+    // Copy to clipboard
+    try {
+        await navigator.clipboard.writeText(summary);
+
+        // Visual feedback - change icon briefly
+        const button = event.target.closest('.copy-btn');
+        if (button) {
+            const originalContent = button.innerHTML;
+            button.innerHTML = '✅';
+            button.setAttribute('title', 'Copied!');
+
+            setTimeout(() => {
+                button.innerHTML = originalContent;
+                button.setAttribute('title', 'Copy to clipboard');
+            }, 2000);
+        }
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        // Fallback - could show error message
+        const button = event.target.closest('.copy-btn');
+        if (button) {
+            const originalContent = button.innerHTML;
+            button.innerHTML = '❌';
+            setTimeout(() => {
+                button.innerHTML = originalContent;
+            }, 2000);
+        }
+    }
+}
+
 // Update summary content
 function updateSummary() {
     const summaryContent = document.getElementById('summary-content');
