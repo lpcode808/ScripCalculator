@@ -9,10 +9,8 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 - Mobile-optimized interface
 - Collapsible categories with emoji icons
 - Order summary with running totals woot
-- Automatic cost calculation (sheets of 20 scrip)
-- Mobile-first responsive design
+- Automatic cost calculation (sheets of 10 scrip)
 - Clean, modern UI with Merriweather and Overpass fonts
-- Version tracking with timestamps
 
 ## Implementation Details
 - Component-based structure for maintainability
@@ -29,10 +27,9 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 - Updated color scheme: Deep jungle greens, bright carnival yellow, tropical parrot accents
 
 ### Menu Updates
-- Updated all prices for 2026 carnival
+- Updated all prices for 2026 carnival (shift from 50¢ a scrip to $1)
 - Reorganized categories for better navigation
 - Removed "NEW LOCATION" tags (no longer new!)
-- Price reductions across most items
 
 ### Design Improvements
 - Jungle-themed color palette inspired by 2026 carnival artwork
@@ -84,17 +81,35 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 4. Use order summary to review selections
 
 ## Development
-To run locally:
-```bash
-python3 -m http.server 8000
-```
-Then visit `http://localhost:8000`
+
+## FAQs
+  **Q: "Are you going to see all the things I buy at carnival?"**
+  A: Nope. The calculator runs entirely in your browser (on your phone or
+  computer). Think of it like the calculator app on your phone: it does the math on
+  your device and doesn’t send your selections anywhere.
+
+  **Q: How does the dollar total work now that scrip is $1?**
+  A: Each scrip is $1, and scrip is sold in sheets of 20. So the cash total rounds
+  up to the nearest sheet ($20 increments).
+
+  **Q: Do I need internet to use it?**
+  A: You need internet to load the page and menu data. After it’s loaded, the
+  calculations run locally in your browser.
+
+  **Q: Where do the prices live / how do I update them?**
+  A: Prices are in `data/menu.json`. Update the file and refresh the page.
+
+  **Q: Is this the official carnival menu?**
+  A: No — this is a community tool. If you need official info, check the [official
+  carnival](https://carnival.punahou.edu/) sources.
+
+
+
 
 ## Disclaimer
 "Not responsible for miscalculations, miscommunications, mismeasurements
 or more malasadas munched than you meant"
 
-Email justinlai@alum.mit.edu with any mistakes you catch.
 This was created with the help of AI. I learned a lot!
 
 While I am no longer currently working at Punahou, I am grateful for the opportunity to have been a part of the community. Mahalo to all who have kept in touch. This is my token of appreciation for you. Until we meet again!
