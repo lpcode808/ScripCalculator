@@ -84,22 +84,27 @@ A mobile-friendly web app to help calculate scrip needed for food purchases at t
 
 ## FAQs
   **Q: "Are you going to see all the things I buy at carnival?"**
+  
   A: Nope. The calculator runs entirely in your browser (on your phone or
   computer). Think of it like the calculator app on your phone: it does the math on
   your device and doesn’t send your selections anywhere.
 
   **Q: How does the dollar total work now that scrip is $1?**
-  A: Each scrip is $1, and scrip is sold in sheets of 20. So the cash total rounds
-  up to the nearest sheet ($20 increments).
+  
+  A: Each scrip is $1, and scrip is sold in sheets of 10. So the cash total rounds
+  up to the nearest sheet ($10 increments).
 
   **Q: Do I need internet to use it?**
+  
   A: You need internet to load the page and menu data. After it’s loaded, the
   calculations run locally in your browser.
 
   **Q: Where do the prices live / how do I update them?**
+  
   A: Prices are in `data/menu.json`. Update the file and refresh the page.
 
   **Q: Is this the official carnival menu?**
+  
   A: No — this is a community tool. If you need official info, check the [official
   carnival](https://carnival.punahou.edu/) sources.
 
