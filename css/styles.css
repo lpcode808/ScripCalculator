@@ -254,6 +254,10 @@ body {
         margin: 2px 0;
     }
 
+    .info-about {
+        margin-bottom: 10px !important;  /* Extra spacing before timestamp on mobile */
+    }
+
     .category {
         margin: 8px;
     }
